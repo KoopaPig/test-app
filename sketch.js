@@ -1,6 +1,6 @@
 shape_x = 200;
 shape_y = 200;
-
+//adding comment to test git
 shape_dx = 2;
 shape_dy = 0;
 
