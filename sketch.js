@@ -1,3 +1,8 @@
+//Idea: create square that shrinks over time, maybe speeds up shrinking
+//Click on square to make it bigger by a constant amount, so you have to click faster to keep it going
+//Check for when it reaches a certain size, end game
+//maybe display time
+
 shape_x = 200;
 shape_y = 200;
 //adding comment to test git
