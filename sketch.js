@@ -1,7 +1,5 @@
-//Idea: create square that shrinks over time, maybe speeds up shrinking
 //Click on square to make it bigger by a constant amount, so you have to click faster to keep it going
-//Check for when it reaches a certain size, end game
-//maybe display time
+//Displays clicks and time at end of game (once square is too small)
 
 canvasSize_x = 720; canvasSize_y = 480;
 
@@ -28,8 +26,8 @@ function shape() {
 }
 
 function mousePressed() {
-  size = size + 10;
-  clicks++;
+  size = size + 10 + rate/2 * 10;
+  if (gameEnd == false) { clicks++; }
 }
 
 function draw() {
@@ -40,6 +38,11 @@ function draw() {
     shape_x = width/2 - size/2;
     shape_y = height/2 - size/2;
     size = size - rate;
+    //draw instructions
+    textFont('Helvetica');
+    textAlign(CENTER, CENTER);
+    textSize(30);
+    text('Click anywhere to keep the box big.', width/2, height - 30);
     //draw timer
     textFont('Helvetica');
     textAlign(CENTER, CENTER);
@@ -48,17 +51,15 @@ function draw() {
     if (frameCount % 6 == 0) {
       timer = round(timer = timer + 0.1, 2); 
     }
-    rate = rate + 0.004;
+    rate = rate + 0.002;
     
-    if (size < 10) {
-      gameEnd = true;
-    }
+    if (size < 10) { gameEnd = true; }
   } else {
     
     textFont('Helvetica');
     textSize(30);
     textAlign(CENTER);
-    text('The square died.\nTime: ' + timer + '\nClicks: ' + clicks, width/2, height/2);
+    text('The box died.\nTime: ' + timer + '\nClicks: ' + clicks, width/2, height/2);
     
   }
 }
