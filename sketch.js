@@ -3,37 +3,62 @@
 //Check for when it reaches a certain size, end game
 //maybe display time
 
-shape_x = 200;
-shape_y = 200;
-//adding comment to test git
-shape_dx = 2;
-shape_dy = 0;
+canvasSize_x = 720; canvasSize_y = 480;
+
+//setup global variables
+let clicks = 0;
+let timer = 0;
+rate = 1.5;
+    
+//setup states
+gameEnd = false;
 
 function setup() {
-    createCanvas(400, 400);
+  createCanvas(720, 480);
+    //setup shape
+    size = 200;
+    shape_x = width/2 - size/2;
+    shape_y = height/2 - size/2;
+    
+    console.log("setup");
 }
  
 function shape() {
-    square(shape_x, shape_y, 50);
+    square(shape_x, shape_y, size);
+}
+
+function mousePressed() {
+  size = size + 10;
+  clicks++;
 }
 
 function draw() {
     background(220);
+    
+  if (gameEnd == false) { 
     shape();
-    shape_x = shape_x + shape_dx;
-    shape_y = shape_y + shape_dy;
-    if ((shape_x < 0) || (shape_x > 400)) {
-        shape_dx = -shape_dx;
+    shape_x = width/2 - size/2;
+    shape_y = height/2 - size/2;
+    size = size - rate;
+    //draw timer
+    textFont('Helvetica');
+    textAlign(CENTER, CENTER);
+    textSize(35);
+    text('TIME: ' + timer, width/2, 30);
+    if (frameCount % 6 == 0) {
+      timer = round(timer = timer + 0.1, 2); 
     }
-    if ((shape_y < 0) || (shape_y > 400)) {
-        shape_dy = -shape_dy;
+    rate = rate + 0.004;
+    
+    if (size < 10) {
+      gameEnd = true;
     }
-    shape_dy = shape_dy + 0.05;
-}
-
-function mousePressed() {
-    shape_x = mouseX;
-    shape_y = mouseY;
-    shape_dx = 0;
-    shape_dy = 0;
+  } else {
+    
+    textFont('Helvetica');
+    textSize(30);
+    textAlign(CENTER);
+    text('The square died.\nTime: ' + timer + '\nClicks: ' + clicks, width/2, height/2);
+    
+  }
 }
