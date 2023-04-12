@@ -1,6 +1,8 @@
 //Click on square to make it bigger by a constant amount, so you have to click faster to keep it going
 //Displays clicks and time at end of game (once square is too small)
 
+const { expect } = require("chai");
+
 canvasSize_x = 720; canvasSize_y = 480;
 
 //setup global variables
@@ -12,6 +14,7 @@ rate = 1.5;
 gameEnd = false;
 
 //chai testing
+chai = require('chai');
 assert = chai.assert;
 expect = chai.expect;
 
@@ -23,8 +26,11 @@ function addxy(x,y) {
 function testStuff() {
   console.log("testStuff");
   assert(addxy(2,3) == 5, "equality fails"); //second argument is error msg
-
+  expect(addxy(4,4)).to.equal(8);
+  console.log("testStuff done");
 }
+    
+testStuff();
 
 //setup
 function setup() {
@@ -33,8 +39,7 @@ function setup() {
     size = 200;
     shape_x = width/2 - size/2;
     shape_y = height/2 - size/2;
-    
-    testStuff();
+
     console.log("setup");
 }
  
