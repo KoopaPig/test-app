@@ -11,6 +11,22 @@ rate = 1.5;
 //setup states
 gameEnd = false;
 
+//chai testing
+assert = chai.assert;
+expect = chai.expect;
+
+//test functions
+function addxy(x,y) {
+  return x + y;
+}
+
+function testStuff() {
+  console.log("testStuff");
+  assert(addxy(2,3) == 5, "equality fails"); //second argument is error msg
+
+}
+
+//setup
 function setup() {
   createCanvas(720, 480);
     //setup shape
@@ -29,14 +45,6 @@ function shape() {
 function mousePressed() {
   size = size + 10 + rate/2 * 10;
   if (gameEnd == false) { clicks++; }
-}
-
-function addxy(x,y) {
-  return x + y;
-}
-
-function testStuff() {
-  console.log("testStuff");
 }
 
 function draw() {
