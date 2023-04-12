@@ -14,6 +14,7 @@ rate = 1.5;
 gameEnd = false;
 
 //chai testing
+chai = require('chai');
 assert = chai.assert;
 expect = chai.expect;
 
@@ -28,6 +29,8 @@ function testStuff() {
   expect(addxy(4,4)).to.equal(8);
   console.log("testStuff done");
 }
+    
+testStuff();
 
 //setup
 function setup() {
@@ -36,8 +39,7 @@ function setup() {
     size = 200;
     shape_x = width/2 - size/2;
     shape_y = height/2 - size/2;
-    
-    testStuff();
+
     console.log("setup");
 }
  
