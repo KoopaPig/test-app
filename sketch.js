@@ -11,6 +11,22 @@ rate = 1.5;
 //setup states
 gameEnd = false;
 
+//chai testing
+assert = chai.assert;
+expect = chai.expect;
+
+//test functions
+function addxy(x,y) {
+  return x + y;
+}
+
+function testStuff() {
+  console.log("testStuff");
+  assert(addxy(2,3) == 5, "equality fails"); //second argument is error msg
+
+}
+
+//setup
 function setup() {
   createCanvas(720, 480);
     //setup shape
@@ -18,6 +34,7 @@ function setup() {
     shape_x = width/2 - size/2;
     shape_y = height/2 - size/2;
     
+    testStuff();
     console.log("setup");
 }
  
