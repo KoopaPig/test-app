@@ -14,7 +14,6 @@ rate = 1.5;
 gameEnd = false;
 
 //chai testing
-chai = require('chai');
 assert = chai.assert;
 expect = chai.expect;
 
